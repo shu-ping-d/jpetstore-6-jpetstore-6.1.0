@@ -21,9 +21,10 @@ import java.util.List;
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
-import org.mybatis.jpetstore.mapper.CategoryMapper;
 import org.mybatis.jpetstore.mapper.ItemMapper;
 import org.mybatis.jpetstore.mapper.ProductMapper;
+import org.mybatis.jpetstore.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -31,25 +32,19 @@ import org.springframework.stereotype.Service;
  *
  * @author Eduardo Macarron
  */
-@Service
+@Service("catalogService")
 public class CatalogService {
-
-  private final CategoryMapper categoryMapper;
-  private final ItemMapper itemMapper;
-  private final ProductMapper productMapper;
-
-  public CatalogService(CategoryMapper categoryMapper, ItemMapper itemMapper, ProductMapper productMapper) {
-    this.categoryMapper = categoryMapper;
-    this.itemMapper = itemMapper;
-    this.productMapper = productMapper;
-  }
+  @Autowired(required = false)
+  private CategoryRepository categoryMapper;
+  private ItemMapper itemMapper;
+  private ProductMapper productMapper;
 
   public List<Category> getCategoryList() {
-    return categoryMapper.getCategoryList();
+    return categoryMapper.findAll();
   }
 
   public Category getCategory(String categoryId) {
-    return categoryMapper.getCategory(categoryId);
+    return categoryMapper.findById(categoryId).get();
   }
 
   public Product getProduct(String productId) {

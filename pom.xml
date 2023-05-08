@@ -26,7 +26,6 @@
     <relativePath />
   </parent>
 
-  <groupId>org.mybatis</groupId>
   <artifactId>jpetstore</artifactId>
   <version>6.1.0</version>
   <packaging>war</packaging>
@@ -129,7 +128,6 @@
       <artifactId>slf4j-simple</artifactId>
       <version>2.0.5</version>
     </dependency>
-
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -139,9 +137,20 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>3.6.10.Final</version>
+      <version>5.6.13.Final</version>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.data</groupId>-->
+<!--      <artifactId>spring-data-jpa</artifactId>-->
+<!--      <version>3.0.5</version>-->
+<!--    </dependency>-->
 
+    <!--   for crudrespository   -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <version>2.6.3</version>
+    </dependency>
     <!--  mysql connect  -->
     <dependency>
       <groupId>mysql</groupId>

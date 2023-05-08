@@ -32,6 +32,7 @@ import org.mybatis.jpetstore.service.CatalogService;
  *
  * @author Eduardo Macarron
  */
+
 @SessionScope
 public class CatalogActionBean extends AbstractActionBean {
 

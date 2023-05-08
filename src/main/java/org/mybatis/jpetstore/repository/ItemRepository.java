@@ -28,21 +28,23 @@
 // * See the License for the specific language governing permissions and
 // * limitations under the License.
 // */
-// package org.mybatis.jpetstore.mapper;
+// package org.mybatis.jpetstore.repository;
 //
 // import java.util.List;
+// import java.util.Optional;
 //
-// import org.mybatis.jpetstore.domain.Category;
+// import org.springframework.data.repository.CrudRepository;
 //
-/// **
-// * The Interface CategoryMapper.
-// *
-// * @author Eduardo Macarron
-// */
-// public interface CategoryMapper {
+// import domain.Item;
 //
-// List<Category> getCategoryList();
+// public interface ItemRepository extends CrudRepository<Item, String> {
 //
-// Category getCategory(String categoryId);
+// // void updateInventoryQuantity(Map<String, Object> param);
+//
+// // int getInventoryQuantity(String itemId);
+//
+// List<Item> findAllByProductId(String productId);
+//
+// Optional<Item> findById(String itemId);
 //
 // }
