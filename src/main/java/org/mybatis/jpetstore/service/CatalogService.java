@@ -22,8 +22,8 @@ import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.mapper.ItemMapper;
-import org.mybatis.jpetstore.mapper.ProductMapper;
 import org.mybatis.jpetstore.repository.CategoryRepository;
+import org.mybatis.jpetstore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,12 +32,13 @@ import org.springframework.stereotype.Service;
  *
  * @author Eduardo Macarron
  */
-@Service("catalogService")
+@Service
 public class CatalogService {
   @Autowired(required = false)
   private CategoryRepository categoryMapper;
   private ItemMapper itemMapper;
-  private ProductMapper productMapper;
+  @Autowired(required = false)
+  private ProductRepository productMapper;
 
   public List<Category> getCategoryList() {
     return categoryMapper.findAll();
@@ -48,11 +49,11 @@ public class CatalogService {
   }
 
   public Product getProduct(String productId) {
-    return productMapper.getProduct(productId);
+    return productMapper.findById(productId).get();
   }
 
   public List<Product> getProductListByCategory(String categoryId) {
-    return productMapper.getProductListByCategory(categoryId);
+    return productMapper.findByCategoryId(categoryId);
   }
 
   /**
@@ -66,7 +67,7 @@ public class CatalogService {
   public List<Product> searchProductList(String keywords) {
     List<Product> products = new ArrayList<>();
     for (String keyword : keywords.split("\\s+")) {
-      products.addAll(productMapper.searchProductList("%" + keyword.toLowerCase() + "%"));
+      products.addAll(productMapper.findByNameContaining("%" + keyword.toLowerCase() + "%"));
     }
     return products;
   }

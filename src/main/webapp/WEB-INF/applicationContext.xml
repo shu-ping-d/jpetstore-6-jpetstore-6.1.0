@@ -64,7 +64,7 @@
 <!--version3 added-->
     <bean id="hibernateSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="org.mybatis.jpetstore.service.CatalogService"/>
+        <property name="packagesToScan" value="org.mybatis.jpetstore.service"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -77,7 +77,7 @@
     <bean id="myEmf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="org.mybatis.jpetstore.service.CatalogService" />
+        <property name="packagesToScan" value="org.mybatis.jpetstore.service" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>

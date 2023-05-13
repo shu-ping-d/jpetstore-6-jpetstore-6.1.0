@@ -46,17 +46,13 @@ public class CatalogActionBean extends AbstractActionBean {
 
   @SpringBean
   private transient CatalogService catalogService;
-
   private String keyword;
-
   private String categoryId;
   private Category category;
   private List<Category> categoryList;
-
   private String productId;
   private Product product;
   private List<Product> productList;
-
   private String itemId;
   private Item item;
   private List<Item> itemList;
